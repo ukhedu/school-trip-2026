@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 용천초등학교 수학여행 안내 (교사용)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 폰트 및 모바일 터치 최적화 */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght=300;400;500;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* 가로 스크롤 방지 및 스무스 스크롤 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col pb-16 md:pb-0">
+
+  <!-- 상단 네비게이션 헤더 -->
+  <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <div class="bg-yellow-400 text-indigo-900 p-2 rounded-lg font-black text-xl shadow">
+          <i class="fa-solid fa-bus"></i>
+        </div>
+        <div>
+          <h1 class="text-lg md:text-xl font-bold tracking-tight">2026 용천초등학교 수학여행</h1>
+          <p class="text-xs text-indigo-200">인솔 교사용 종합 스마트 안내 웹페이지</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="bg-indigo-800 text-indigo-100 text-xs px-2.5 py-1 rounded-full border border-indigo-700">
+          <i class="fa-solid fa-users-gear mr-1"></i> 총 45명 (학생 41, 교직원 4)
+        </span>
+      </div>
+    </div>
+
+    <!-- 탭 메뉴 (모바일에서는 가로 드래그 지원 및 하단 스크롤바 삭제) -->
+    <div class="bg-indigo-950 border-t border-indigo-800 overflow-x-auto no-scrollbar">
+      <nav class="max-w-7xl mx-auto px-2 flex whitespace-nowrap" id="tab-container">
+        <button onclick="switchTab('tab-students')" id="btn-tab-students" class="px-4 py-3 text-sm font-semibold border-b-2 border-yellow-400 text-yellow-400 flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-graduation-cap"></i> 참가학생
+        </button>
+        <button onclick="switchTab('tab-contacts')" id="btn-tab-contacts" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-phone"></i> 업무연락망
+        </button>
+        <button onclick="switchTab('tab-schedule')" id="btn-tab-schedule" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-calendar-days"></i> 일정표
+        </button>
+        <button onclick="switchTab('tab-contractors')" id="btn-tab-contractors" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-file-contract"></i> 계약업체
+        </button>
+        <button onclick="switchTab('tab-bus')" id="btn-tab-bus" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-bus-simple"></i> 버스배정
+        </button>
+        <button onclick="switchTab('tab-rooms')" id="btn-tab-rooms" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-hotel"></i> 방배정
+        </button>
+        <button onclick="switchTab('tab-map')" id="btn-tab-map" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-map-location-dot"></i> 숙소배치도
+        </button>
+        <button onclick="switchTab('tab-night')" id="btn-tab-night" class="px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150">
+          <i class="fa-solid fa-moon"></i> 야간지도
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="flex-grow max-w-7xl w-full mx-auto p-4">
+
+    <!-- 1. [참가학생] 탭 -->
+    <section id="tab-students" class="tab-content space-y-6">
+      <!-- 학급별 현황 카드 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 6학년 1반 카드 -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+          <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-blue-500"></span> 6학년 1반 현황
+            </h3>
+            <span class="bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md">담임: 엄규현 선생님</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="bg-slate-50 p-3 rounded-xl">
+              <p class="text-xs text-slate-500">남학생</p>
+              <p class="text-lg font-bold text-slate-800 mt-0.5">11명</p>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl">
+              <p class="text-xs text-slate-500">여학생</p>
+              <p class="text-lg font-bold text-slate-800 mt-0.5">9명</p>
+            </div>
+            <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+              <p class="text-xs text-blue-600 font-medium">계</p>
+              <p class="text-lg font-bold text-blue-800 mt-0.5">20명</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6학년 2반 카드 -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+          <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span> 6학년 2반 현황
+            </h3>
+            <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-md">담임: 박보경 선생님</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="bg-slate-50 p-3 rounded-xl">
+              <p class="text-xs text-slate-500">남학생</p>
+              <p class="text-lg font-bold text-slate-800 mt-0.5">13명</p>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl">
+              <p class="text-xs text-slate-500">여학생</p>
+              <p class="text-lg font-bold text-slate-800 mt-0.5">8명</p>
+            </div>
+            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+              <p class="text-xs text-emerald-600 font-medium">계</p>
+              <p class="text-lg font-bold text-emerald-800 mt-0.5">21명</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 실시간 학생 정보 및 보호자 연락처 통합 검색/목록 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">학생 비상연락처 일괄조회</h3>
+            <p class="text-xs text-slate-500 mt-1">이름을 검색하거나 학급 필터를 통해 학생과 보호자 연락처를 쉽게 찾으세요.</p>
+          </div>
+          <div class="flex gap-2 w-full md:w-auto">
+            <div class="relative flex-grow">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input type="text" id="studentSearchInput" onkeyup="filterStudentList()" placeholder="학생 이름 입력..." class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+            </div>
+            <select id="classFilter" onchange="filterStudentList()" class="border border-slate-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">전체 학급</option>
+              <option value="6-1">6-1</option>
+              <option value="6-2">6-2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-xl border border-slate-100">
+          <div class="hidden sm:grid grid-cols-12 bg-slate-100 p-3 text-xs font-bold text-slate-600 border-b border-slate-200 text-center">
+            <div class="col-span-1">학반</div>
+            <div class="col-span-1">번호</div>
+            <div class="col-span-2">이름</div>
+            <div class="col-span-4">학생 본인 연락처</div>
+            <div class="col-span-4">보호자 비상 연락처</div>
+          </div>
+          <div id="studentListContainer" class="divide-y divide-slate-100 max-h-[500px] overflow-y-auto">
+            <!-- 6-1 & 6-2 학생 목록 루프 바인딩 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. [업무연락망] 탭 -->
+    <section id="tab-contacts" class="tab-content hidden space-y-6">
+      <!-- 인솔교사 비상 연락처 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-circle-phone text-indigo-600"></i> 인솔교사 비상연락망
+        </h3>
+        <p class="text-xs text-slate-500 mb-4">* 전화번호 버튼을 탭하면 즉시 다이얼로 연결됩니다.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- 박승열 교감 -->
+          <div class="bg-gradient-to-br from-indigo-50 to-slate-50 p-4 rounded-xl border border-indigo-100 flex flex-col justify-between">
+            <div>
+              <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">교감 / 인솔책임자</span>
+              <p class="text-lg font-bold text-slate-800 mt-2">박승열 교감선생님</p>
+            </div>
+            <a href="tel:010-3474-7978" class="mt-4 bg-white hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-sm font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-phone"></i> 010-3474-7978
+            </a>
+          </div>
+          <!-- 엄규현 교사 -->
+          <div class="bg-gradient-to-br from-indigo-50 to-slate-50 p-4 rounded-xl border border-indigo-100 flex flex-col justify-between">
+            <div>
+              <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">6-1 담임 / 업무총괄</span>
+              <p class="text-lg font-bold text-slate-800 mt-2">엄규현 선생님</p>
+            </div>
+            <a href="tel:010-7447-4895" class="mt-4 bg-white hover:bg-indigo-100 text-blue-700 border border-blue-200 text-sm font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-phone"></i> 010-7447-4895
+            </a>
+          </div>
+          <!-- 박보경 교사 -->
+          <div class="bg-gradient-to-br from-indigo-50 to-slate-50 p-4 rounded-xl border border-indigo-100 flex flex-col justify-between">
+            <div>
+              <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">6-2 담임 / 안전지도 책임</span>
+              <p class="text-lg font-bold text-slate-800 mt-2">박보경 선생님</p>
+            </div>
+            <a href="tel:010-4343-5472" class="mt-4 bg-white hover:bg-indigo-100 text-emerald-700 border border-emerald-200 text-sm font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-phone"></i> 010-4343-5472
+            </a>
+          </div>
+          <!-- 나진주 안전요원 -->
+          <div class="bg-gradient-to-br from-indigo-50 to-slate-50 p-4 rounded-xl border border-indigo-100 flex flex-col justify-between">
+            <div>
+              <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">부담임 / 안전요원 / 방역책임</span>
+              <p class="text-lg font-bold text-slate-800 mt-2">나진주 선생님</p>
+            </div>
+            <a href="tel:010-7393-1113" class="mt-4 bg-white hover:bg-rose-100 text-rose-700 border border-rose-200 text-sm font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-phone"></i> 010-7393-1113
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 인솔교사 업무 분장 상세 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-briefcase text-indigo-600"></i> 세부 업무 분장표
+        </h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-indigo-900 text-sm">인솔 책임자</span>
+              <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold">교감 박승열</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              • 참가 학생 및 인솔자 총괄 관리
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-indigo-900 text-sm">업무 총괄</span>
+              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">교사 엄규현</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              • 수학여행 기본 계획 및 세부 계획 수립, 사전 답사 및 현장 운영 총괄<br>
+              • 사후 만족도 조사 및 결과 보고서 작성
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-indigo-900 text-sm">학생 인솔 / 현장 안전지도 / 생활지도</span>
+              <span class="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">인솔교사 전원</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">• 학생 인솔, 수시 인원 점검 및 이동 시 안전 교육 실시, 응급상황 대처 및 환자 관리<br>• (교감 박승열, 교사 엄규현, 박보경, 나진주)</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-indigo-900 text-sm">안전 지도 / 요보호 학생 책임</span>
+              <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">교사 엄규현, 박보경</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">• 학급 안전지도 및 생활지도 지원, 요보호 학생 지도 및 응급 상황 관리</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-indigo-900 text-sm">방역 책임자 / 기타 보조 지도</span>
+              <span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">교사 나진주</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">• 방역 상황 점검 및 감독, 기타 응급 상황 관리 및 수학여행 전반 보조</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. [일정표] 탭 -->
+    <section id="tab-schedule" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">전체 일정 상세 타임라인</h3>
+            <p class="text-xs text-slate-500 mt-0.5">※ 장소명을 클릭하면 해당 장소의 홈페이지로 이동합니다.</p>
+          </div>
+          <!-- 일정 필터 버튼 -->
+          <div class="inline-flex rounded-lg p-0.5 bg-slate-100 text-xs font-semibold">
+            <button onclick="filterDay('all')" id="btn-day-all" class="px-3 py-1.5 rounded-md bg-white text-indigo-900 shadow">전체</button>
+            <button onclick="filterDay('1')" id="btn-day-1" class="px-3 py-1.5 rounded-md text-slate-500 hover:text-slate-800">1일차</button>
+            <button onclick="filterDay('2')" id="btn-day-2" class="px-3 py-1.5 rounded-md text-slate-500 hover:text-slate-800">2일차</button>
+            <button onclick="filterDay('3')" id="btn-day-3" class="px-3 py-1.5 rounded-md text-slate-500 hover:text-slate-800">3일차</button>
+          </div>
+        </div>
+
+        <div class="relative border-l-2 border-indigo-100 ml-3 md:ml-6 pl-4 md:pl-8 space-y-8" id="timelineContainer">
+          <!-- 1일차 일정 -->
+          <div class="relative timeline-item day-1">
+            <div class="absolute -left-[25px] md:-left-[41px] top-0 bg-indigo-900 text-white text-xs w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold">1</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">1일차 - 10월 19일</span>
+              <div class="mt-3 space-y-4">
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">09:00 ~ 10:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">학교 출발 및 안전교육</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">차량 탑승 완료, 비상 안전 수칙 안내</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">10:00 ~ 12:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      남산 케이블카 &amp; 
+                      <a href="https://www.seoultower.co.kr/" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline inline-flex items-center gap-1 font-extrabold">
+                        YTN 서울타워 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+                      <i class="fa-solid fa-tree text-emerald-500 text-xs ml-1"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">케이블카 탑승 이동 및 서울 전경 전망 관람</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">12:30 ~ 13:30</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-amber-700 flex items-center gap-1">중식 (남산돈까스 101번지) <i class="fa-solid fa-utensils text-xs"></i></h4>
+                    <p class="text-xs text-slate-500 mt-0.5">점심 단체 식사 진행</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">14:00 ~ 16:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      대학로 문화 예술 연극 관람 
+                      <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-normal">
+                        공연 파란
+                      </span>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">대학로 소극장 이동 및 연극 감상 (공연사: 공연 파란)</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">16:30 ~ 18:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      <a href="https://seoulsky.lotteworld.com/" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline inline-flex items-center gap-1 font-extrabold">
+                        서울스카이 (롯데월드 타워) <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+                      <i class="fa-solid fa-building text-xs text-slate-500 ml-1"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">세계 5위 초고층 전망대 스카이데크 관람</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">18:30 ~ 20:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-amber-700 flex items-center gap-1">
+                      석식 (애슐리퀸즈 구의점) <i class="fa-solid fa-utensils text-xs"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">식사 후 숙소(올림픽파크텔) 이동 및 배정, 소방안전대피훈련 실시</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">20:00 ~</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">객실 배정, 세면 및 취침</h4>
+                    <p class="text-xs text-rose-500 mt-0.5 font-semibold">22시 점호 및 소등 지도 철저</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2일차 일정 -->
+          <div class="relative timeline-item day-2">
+            <div class="absolute -left-[25px] md:-left-[41px] top-0 bg-indigo-900 text-white text-xs w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold">2</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded">2일차 - 10월 20일</span>
+              <div class="mt-3 space-y-4">
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">07:30 ~ 08:30</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">기상 및 조식 식사</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">아침 인원 점검 및 건강 상태 파악</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">09:00 ~ 10:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">졸업앨범 야외 촬영 <i class="fa-solid fa-camera text-xs text-indigo-500"></i></h4>
+                    <p class="text-xs text-slate-500 mt-0.5">조별 및 개인 졸업 야외 사진 촬영</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">10:00 ~ 12:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      <a href="https://adventure.lotteworld.com/" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline inline-flex items-center gap-1 font-extrabold">
+                        롯데월드 어드벤처 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+                      입장 <i class="fa-solid fa-wand-magic-sparkles text-xs text-pink-500 ml-1"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">놀이시설 이용 수칙 및 비상 안전 구역(안내데스크) 확인</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">12:00 ~ 13:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-amber-700">중식 식사 (롯데월드 내부)</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">지정 밀쿠폰 배부 및 분산 식사 지도</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">13:00 ~ 18:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900">롯데월드 자유이용 및 어트랙션</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">교사 지정 초소 순찰 및 단체 비상연락 유지</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">18:00 ~ 19:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-amber-700">석식 식사 (롯데월드 내부)</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">지정 밀쿠폰 이용 단체 안전 점검</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">19:00 ~ 21:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">롯데월드 퍼레이드 및 야간개장 관람 <i class="fa-solid fa-sparkles text-yellow-500 text-xs"></i></h4>
+                    <p class="text-xs text-slate-500 mt-0.5">화려한 퍼레이드 감상 및 야간 특별 활동</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">21:00 ~</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">숙소 복귀 및 세면, 휴식</h4>
+                    <p class="text-xs text-rose-500 mt-0.5 font-semibold">야간 근무교사 교대 인수인계 완료</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3일차 일정 -->
+          <div class="relative timeline-item day-3">
+            <div class="absolute -left-[25px] md:-left-[41px] top-0 bg-indigo-900 text-white text-xs w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold">3</div>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded">3일차 - 10월 21일</span>
+              <div class="mt-3 space-y-4">
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">07:30 ~ 08:30</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">조식 식사 및 짐 정리</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">방 내부 정리 정돈 상태 및 유실물 체크</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">09:30 ~ 11:00</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      <a href="https://royal.khs.go.kr/ROYAL/contents/menuInfo-gbg.do?grpCode=gbg" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline inline-flex items-center gap-1 font-extrabold">
+                        경복궁 탐방 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+                      <i class="fa-solid fa-gopuram text-xs text-amber-600 ml-1"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">전통 역사 문화체험 및 해설 동반 관람</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">11:30 ~ 12:30</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-amber-700 flex items-center gap-1">중식 (애슐리 종각역점) <i class="fa-solid fa-pizza-slice text-xs text-yellow-500"></i></h4>
+                    <p class="text-xs text-slate-500 mt-0.5">시내 뷔페 단체 식사 및 이동 질서 유지</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">13:00 ~ 14:30</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-indigo-900 flex items-center gap-1">
+                      <a href="https://sphh.sscmc.or.kr/" target="_blank" class="text-indigo-600 hover:text-indigo-800 underline inline-flex items-center gap-1 font-extrabold">
+                        서대문형무소 역사관 관람 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                      </a>
+                      <i class="fa-solid fa-monument text-xs text-slate-600 ml-1"></i>
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">우리 역사 아픔 되새기기 및 경건한 태도 지도</p>
+                  </div>
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-semibold text-slate-500 w-24 shrink-0">14:30 ~</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-slate-800">학교 출발 및 복귀</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">부모님 안심 알리미 전송 및 최종 귀가 지도</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. [계약업체] 탭 -->
+    <section id="tab-contractors" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-4">수학여행 현지 연계 업체</h3>
+        <p class="text-xs text-slate-500 mb-6">* 각 업체의 예약 현황과 주요 연락 수단이 등록되어 있습니다.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- 숙소 -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2.5 py-1 rounded">숙박시설</span>
+                <span class="text-xs text-green-600 font-semibold"><i class="fa-solid fa-circle-check"></i> 예약확정</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-800 mt-3 flex items-center gap-1.5">
+                올림픽파크텔
+                <a href="https://www.parktel.co.kr/main/main.do" target="_blank" class="text-xs text-indigo-600 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i> 홈페이지</a>
+              </h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">담당자: 문성준 과장<br>비상대피 훈련 전용 설비 완비 및 학생 객실 집중 배치</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200">
+              <p class="text-xs text-slate-400">문성준 과장 연락처</p>
+              <a href="tel:010-9443-0422" class="text-indigo-600 text-sm font-bold flex items-center gap-1 mt-0.5 hover:underline">
+                <i class="fa-solid fa-phone"></i> 010-9443-0422
+              </a>
+            </div>
+          </div>
+
+          <!-- 버스 연계사 -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2.5 py-1 rounded">관광버스 수송</span>
+                <span class="text-xs text-green-600 font-semibold"><i class="fa-solid fa-circle-check"></i> 종합 보험</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-800 mt-3">한창관광</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">2026학년도 수송차량 종합보험 가입 완료 및 수송 안전 통제</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200">
+              <p class="text-xs text-slate-400">대표 연락처</p>
+              <a href="tel:031-258-8811" class="text-indigo-600 text-sm font-bold flex items-center gap-1 mt-0.5 hover:underline">
+                <i class="fa-solid fa-phone"></i> 031-258-8811
+              </a>
+            </div>
+          </div>
+
+          <!-- 연극 공연사 -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2.5 py-1 rounded">1일차 연극</span>
+                <span class="text-xs text-green-600 font-semibold"><i class="fa-solid fa-circle-check"></i> 관람 확정</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-800 mt-3">공연 파란</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">대학로 소극장 단체 예약 및 문화 예술 교육 연극 관람 진행</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200">
+              <p class="text-xs text-slate-400">담당자 연락처</p>
+              <a href="tel:010-7550-1932" class="text-indigo-600 text-sm font-bold flex items-center gap-1 mt-0.5 hover:underline">
+                <i class="fa-solid fa-phone"></i> 010-7550-1932
+              </a>
+            </div>
+          </div>
+
+          <!-- 식사 장소 - 애슐리퀸즈 구의점 -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2.5 py-1 rounded">1일차 석식</span>
+                <span class="text-xs text-green-600 font-semibold"><i class="fa-solid fa-circle-check"></i> 예약확정</span>
+              </div>
+              <h4 class="text-base font-bold text-slate-800 mt-3">애슐리퀸즈 구의점</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">단체 예약 완료 (18:30~20:00) / 대규모 인원 수용 및 철저한 위생 관리</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200">
+              <p class="text-xs text-slate-400">대표 연락처</p>
+              <a href="tel:02-452-1031" class="text-indigo-600 text-sm font-bold flex items-center gap-1 mt-0.5 hover:underline">
+                <i class="fa-solid fa-phone"></i> 02-452-1031
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. [버스배정] 탭 -->
+    <section id="tab-bus" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-2">이동 차량 (버스) 호차별 배정</h3>
+        <p class="text-xs text-slate-500 mb-6">* 안전벨트 및 탑승 규칙을 수시 확인하여 전원이 안전하게 차량을 이용하도록 지도 바랍니다.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 1호차 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="bg-indigo-900 text-white p-4">
+              <div class="flex justify-between items-center">
+                <h4 class="font-bold text-base"><i class="fa-solid fa-bus mr-1"></i> 관광버스 1호차 (한창관광)</h4>
+                <span class="bg-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded border border-indigo-700">6-1 탑승</span>
+              </div>
+              <div class="mt-2 text-xs text-indigo-200 space-y-0.5">
+                <p>수송사: 한창관광 (대표번호: <a href="tel:031-258-8811" class="underline hover:text-indigo-100">031-258-8811</a>)</p>
+                <p>기사님 연락처: <a href="tel:010-1234-5678" class="underline font-semibold">010-1234-5678</a></p>
+              </div>
+            </div>
+            <div class="p-4 space-y-4 bg-slate-50">
+              <div>
+                <span class="text-xs font-bold text-slate-500 block mb-1">인솔자 (2명)</span>
+                <div class="flex gap-2">
+                  <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-indigo-900">교감 박승열</span>
+                  <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-indigo-900">교사 엄규현</span>
+                </div>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-slate-500 block mb-1.5">탑승 학생 (6-1 학생 전원 - 20명)</span>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-white px-2 py-1 rounded-md text-xs border border-slate-200 text-slate-700 font-semibold">6-1 남학생 전원(11명)</span>
+                  <span class="bg-white px-2 py-1 rounded-md text-xs border border-slate-200 text-slate-700 font-semibold">6-1 여학생 전원(9명)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2호차 -->
+          <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="bg-indigo-900 text-white p-4">
+              <div class="flex justify-between items-center">
+                <h4 class="font-bold text-base"><i class="fa-solid fa-bus mr-1"></i> 관광버스 2호차 (한창관광)</h4>
+                <span class="bg-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded border border-indigo-700">6-2 탑승</span>
+              </div>
+              <div class="mt-2 text-xs text-indigo-200 space-y-0.5">
+                <p>수송사: 한창관광 (대표번호: <a href="tel:031-258-8811" class="underline hover:text-indigo-100">031-258-8811</a>)</p>
+                <p>기사님 연락처: <a href="tel:010-1234-5678" class="underline font-semibold">010-1234-5678</a></p>
+              </div>
+            </div>
+            <div class="p-4 space-y-4 bg-slate-50">
+              <div>
+                <span class="text-xs font-bold text-slate-500 block mb-1">인솔자 (2명)</span>
+                <div class="flex gap-2">
+                  <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-indigo-900">교사 박보경</span>
+                  <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-indigo-900">교사 나진주 (안전요원)</span>
+                </div>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-slate-500 block mb-1.5">탑승 학생 (6-2 학생 전원 - 21명)</span>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="bg-white px-2 py-1 rounded-md text-xs border border-slate-200 text-slate-700 font-semibold">6-2 남학생 전원(13명)</span>
+                  <span class="bg-white px-2 py-1 rounded-md text-xs border border-slate-200 text-slate-700 font-semibold">6-2 여학생 전원(8명)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. [방배정] 탭 -->
+    <section id="tab-rooms" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">숙소 학생 방배정표</h3>
+            <p class="text-xs text-slate-500 mt-0.5">※ 각 호실의 첫 번째 학생이 방장(👑)입니다. (올림픽파크텔)</p>
+          </div>
+          <!-- 방배정 검색바 및 학년/성별 필터 -->
+          <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+            <div class="relative flex-grow sm:w-64">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input type="text" id="roomSearchInput" onkeyup="searchStudentInRooms()" placeholder="방 배정 인원 이름 검색..." class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+            </div>
+            <select id="roomClassFilter" onchange="searchStudentInRooms()" class="border border-slate-200 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">전체 반</option>
+              <option value="6-1">6학년 1반</option>
+              <option value="6-2">6학년 2반</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 6학년 1반 방배정 목록 -->
+        <div class="space-y-4 room-class-section" id="room-section-6-1">
+          <h4 class="text-base font-bold text-slate-800 border-l-4 border-blue-500 pl-2">6학년 1반 객실 (3인실 4개, 4인실 2개)</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- 1호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="김건희 김민규 김상윤">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">1호 (3인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>김건희</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김민규</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김상윤</li>
+              </ul>
+            </div>
+            <!-- 2호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="김시현 김차율 박연준 서범석">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2호 (4인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>김시현</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김차율</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">박연준</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">서범석</li>
+              </ul>
+            </div>
+            <!-- 3호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="정민찬 정현승 최윤수 홍주원">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">3호 (4인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>정민찬</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">정현승</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">최윤수</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">홍주원</li>
+              </ul>
+            </div>
+            <!-- 4호(여) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="곽은설 김지원 박규리">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded">4호 (3인실-여)</span>
+                <span class="text-xs text-slate-400">여학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>곽은설</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김지원</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">박규리</li>
+              </ul>
+            </div>
+            <!-- 5호(여) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="이예서 이윤지 이화유">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded">5호 (3인실-여)</span>
+                <span class="text-xs text-slate-400">여학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>이예서</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">이윤지</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">이화유</li>
+              </ul>
+            </div>
+            <!-- 6호(여) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-1" data-students="조윤아 허주은 홍순영">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded">6호 (3인실-여)</span>
+                <span class="text-xs text-slate-400">여학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>조윤아</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">허주은</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">홍순영</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6학년 2반 방배정 목록 -->
+        <div class="space-y-4 mt-8 room-class-section" id="room-section-6-2">
+          <h4 class="text-base font-bold text-slate-800 border-l-4 border-emerald-500 pl-2">6학년 2반 객실 (3인실 3개, 4인실 3개)</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- 1호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="김선규 김재현 김지오">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">1호 (3인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>김선규</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김재현</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김지오</li>
+              </ul>
+            </div>
+            <!-- 2호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="김현수 문주원 박승현">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">2호 (3인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>김현수</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">문주원</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">박승현</li>
+              </ul>
+            </div>
+            <!-- 3호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="양도환 오은율 이기광">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">3호 (3인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>양도환</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">오은율</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">이기광</li>
+              </ul>
+            </div>
+            <!-- 4호(남) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="이다온 이서준 조윤호 황지민">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">4호 (4인실-남)</span>
+                <span class="text-xs text-slate-400">남학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>이다온</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">이서준</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">조윤호</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">황지민</li>
+              </ul>
+            </div>
+            <!-- 5호(여) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="권시윤 김하진 남채원 도은설">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded">5호 (4인실-여)</span>
+                <span class="text-xs text-slate-400">여학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>권시윤</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">김하진</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">남채원</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">도은설</li>
+              </ul>
+            </div>
+            <!-- 6호(여) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 room-card" data-class="6-2" data-students="송은주 조윤서 조하은 최라윤">
+              <div class="flex justify-between items-center mb-2.5">
+                <span class="text-sm font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded">6호 (4인실-여)</span>
+                <span class="text-xs text-slate-400">여학생</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="text-sm text-slate-700 flex items-center justify-between p-1 bg-white rounded border border-slate-100">
+                  <span>송은주</span><span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded">👑 방장</span>
+                </li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">조윤서</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">조하은</li>
+                <li class="text-sm text-slate-700 p-1 bg-white rounded border border-slate-100">최라윤</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. [숙소배치도] 탭 (인터랙티브 기능 탑재) -->
+    <section id="tab-map" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-2">올림픽파크텔 객실 배치 구조</h3>
+        <p class="text-xs text-rose-500 font-bold mb-6 flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-info"></i> 💡 객실 카드를 클릭하면 해당 객실에 투숙하는 학생 이름과 비상연락처를 확인해 다이얼을 즉시 걸 수 있습니다.
+        </p>
+
+        <div class="space-y-8">
+          
+          <!-- Zone 1: 인솔교사 객실 구역 -->
+          <div class="border border-indigo-100 rounded-xl bg-indigo-50/20 p-5">
+            <h4 class="font-bold text-indigo-900 flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-indigo-600"></span> [교사 본부 구역] (객실 1 ~ 3)
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <!-- 객실 1 -->
+              <div class="bg-white p-4 rounded-lg border-2 border-indigo-300 text-center shadow-sm">
+                <p class="text-xs text-indigo-500 font-bold mb-1">객실 1</p>
+                <p class="text-base font-bold text-slate-800">교감 박승열</p>
+                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-semibold mt-1.5 inline-block">인솔책임자</span>
+              </div>
+              <!-- 객실 2 -->
+              <div class="bg-white p-4 rounded-lg border-2 border-indigo-300 text-center shadow-sm">
+                <p class="text-xs text-indigo-500 font-bold mb-1">객실 2</p>
+                <p class="text-base font-bold text-slate-800">교사 엄규현</p>
+                <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold mt-1.5 inline-block">6-1 담임 / 업무총괄</span>
+              </div>
+              <!-- 객실 3 -->
+              <div class="bg-white p-4 rounded-lg border-2 border-indigo-300 text-center shadow-sm">
+                <p class="text-xs text-indigo-500 font-bold mb-1">객실 3</p>
+                <p class="text-base font-bold text-slate-800">교사 박보경 &amp; 나진주</p>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold mt-1.5 inline-block">6-2 담임 &amp; 안전요원</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zone 2: 남학생 객실 구역 -->
+          <div class="border border-blue-100 rounded-xl bg-blue-50/20 p-5">
+            <h4 class="font-bold text-blue-900 flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-blue-500"></span> [Zone 2] 남학생 객실 구역 (6-1남 1~3호, 6-2남 1~4호)
+            </h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              <div onclick="openRoomModal('6-1', '1호', '3인실 (남학생)', ['김건희', '김민규', '김상윤'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 남 1호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">김건희 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-1', '2호', '4인실 (남학생)', ['김시현', '김차율', '박연준', '서범석'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 남 2호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">4인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">김시현 외 3 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-1', '3호', '4인실 (남학생)', ['정민찬', '정현승', '최윤수', '홍주원'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 남 3호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">4인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">정민찬 외 3 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '1호', '3인실 (남학생)', ['김선규', '김재현', '김지오'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 남 1호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">김선규 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '2호', '3인실 (남학생)', ['김현수', '문주원', '박승현'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 남 2호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">김현수 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '3호', '3인실 (남학생)', ['양도환', '오은율', '이기광'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 남 3호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">양도환 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '4호', '4인실 (남학생)', ['이다온', '이서준', '조윤호', '황지민'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-blue-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 남 4호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">4인실</p>
+                <p class="text-[10px] text-blue-600 mt-1">이다온 외 3 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zone 3: 여학생 객실 구역 -->
+          <div class="border border-pink-100 rounded-xl bg-pink-50/20 p-5">
+            <h4 class="font-bold text-pink-900 flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-pink-500"></span> [Zone 3] 여학생 객실 구역 (6-1여 4~6호, 6-2여 5~6호)
+            </h4>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              <div onclick="openRoomModal('6-1', '4호', '3인실 (여학생)', ['곽은설', '김지원', '박규리'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-pink-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 여 4호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-pink-600 mt-1">곽은설 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-1', '5호', '3인실 (여학생)', ['이예서', '이윤지', '이화유'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-pink-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 여 5호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-pink-600 mt-1">이예서 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-1', '6호', '3인실 (여학생)', ['조윤아', '허주은', '홍순영'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-pink-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-1 여 6호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">3인실</p>
+                <p class="text-[10px] text-pink-600 mt-1">조윤아 외 2 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '5호', '4인실 (여학생)', ['권시윤', '김하진', '남채원', '도은설'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-pink-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 여 5호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">4인실</p>
+                <p class="text-[10px] text-pink-600 mt-1">권시윤 외 3 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+              <div onclick="openRoomModal('6-2', '6호', '4인실 (여학생)', ['송은주', '조윤서', '조하은', '최라윤'])" class="bg-white p-3 rounded-lg border border-slate-200 text-center shadow-xs cursor-pointer hover:border-pink-400 hover:shadow-md transition-all active:scale-95">
+                <p class="text-xs text-slate-400 font-bold">6-2 여 6호</p>
+                <p class="text-sm font-semibold text-slate-800 mt-1">4인실</p>
+                <p class="text-[10px] text-pink-600 mt-1">송은주 외 3 <i class="fa-solid fa-magnifying-glass text-[8px] ml-0.5 opacity-60"></i></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. [야간지도] 탭 -->
+    <section id="tab-night" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <h3 class="text-lg font-bold text-slate-900 mb-2">야간 생활지도 및 안전 당직 순번표</h3>
+        <p class="text-xs text-slate-500 mb-4">* 매일 밤 지정된 인솔교사가 안전지도 및 수면지도를 철저하게 이행합니다.</p>
+
+        <div class="space-y-4">
+          <!-- 야간 생활지도 담당 교사의 주요 업무 공통수칙 -->
+          <div class="p-4 rounded-xl bg-indigo-50/50 border border-indigo-100">
+            <h4 class="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-1.5"><i class="fa-solid fa-list-check"></i> 야간 생활지도 주요 업무수칙</h4>
+            <ol class="text-xs text-indigo-950 space-y-1.5 list-decimal list-inside leading-relaxed">
+              <li><strong>숙소 출입 철저 통제:</strong> 무단 야간 외출 금지 및 현관 잠금 확인</li>
+              <li><strong>인원 상시 재점검:</strong> 조별 배정표(출입문 부착용)를 기반으로 전원 재점검 및 취침 유도(담임 교사 출입문 부착)</li>
+              <li><strong>잡상인 및 외래자 무단 출입 금지:</strong> 야간 외부 위험요소 사전 차단</li>
+              <li><strong>소등 및 소란행위 차단:</strong> 숙면 환경 조성 및 밤샘 대화 지도</li>
+              <li><strong>응급 환자 상시 처치:</strong> 환자 발생 시 즉각 대처 및 긴급 이송 체계 상시 가동</li>
+            </ol>
+          </div>
+
+          <!-- 시간대별 배정 계획 목록 -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold text-xs">
+                  <th class="p-3 text-center">날짜 (구분)</th>
+                  <th class="p-3 text-center">23:00 ~ 02:00</th>
+                  <th class="p-3 text-center">02:00 ~ 05:00</th>
+                  <th class="p-3 text-center">05:00 ~ 08:00</th>
+                  <th class="p-3 text-center">17:00 ~ 22:00</th>
+                  <th class="p-3 text-center">주요 근무내용</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-center">
+                <tr>
+                  <td class="p-3 font-semibold bg-slate-50 text-xs">10월 19일 (1일차)</td>
+                  <td class="p-3 text-slate-400">-</td>
+                  <td class="p-3 text-slate-400">-</td>
+                  <td class="p-3 text-slate-400">-</td>
+                  <td class="p-3 text-slate-700 font-medium">인솔교사</td>
+                  <td class="p-3 text-xs text-slate-500">안전생활지도</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold bg-slate-50 text-xs">10월 20일 (2일차)</td>
+                  <td class="p-3 text-indigo-700 font-bold">엄규현</td>
+                  <td class="p-3 text-emerald-700 font-bold">박보경</td>
+                  <td class="p-3 text-rose-700 font-bold">나진주</td>
+                  <td class="p-3 text-slate-700 font-medium">인솔교사</td>
+                  <td class="p-3 text-xs text-slate-500">안전생활지도</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold bg-slate-50 text-xs">10월 21일 (3일차)</td>
+                  <td class="p-3 text-rose-700 font-bold">나진주</td>
+                  <td class="p-3 text-indigo-700 font-bold">엄규현</td>
+                  <td class="p-3 text-emerald-700 font-bold">박보경</td>
+                  <td class="p-3 text-slate-700 font-medium">인솔교사</td>
+                  <td class="p-3 text-xs text-slate-500">안전생활지도 및 귀가지도</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 모바일 하단 플로팅 네비게이션바 (소형 스마트폰 전용 퀵 메뉴) -->
+  <div class="fixed bottom-0 inset-x-0 bg-indigo-950 text-white shadow-2xl flex md:hidden justify-around items-center border-t border-indigo-900 py-2.5 z-40">
+    <button onclick="switchTab('tab-students')" class="flex flex-col items-center gap-1 text-[10px] text-indigo-200 hover:text-white" id="mobile-btn-tab-students">
+      <i class="fa-solid fa-graduation-cap text-lg"></i>
+      참가학생
+    </button>
+    <button onclick="switchTab('tab-contacts')" class="flex flex-col items-center gap-1 text-[10px] text-indigo-200 hover:text-white" id="mobile-btn-tab-contacts">
+      <i class="fa-solid fa-phone text-lg"></i>
+      연락망
+    </button>
+    <button onclick="switchTab('tab-schedule')" class="flex flex-col items-center gap-1 text-[10px] text-indigo-200 hover:text-white" id="mobile-btn-tab-schedule">
+      <i class="fa-solid fa-calendar-days text-lg"></i>
+      일정표
+    </button>
+    <button onclick="switchTab('tab-rooms')" class="flex flex-col items-center gap-1 text-[10px] text-indigo-200 hover:text-white" id="mobile-btn-tab-rooms">
+      <i class="fa-solid fa-hotel text-lg"></i>
+      방배정
+    </button>
+    <button onclick="switchTab('tab-night')" class="flex flex-col items-center gap-1 text-[10px] text-indigo-200 hover:text-white" id="mobile-btn-tab-night">
+      <i class="fa-solid fa-moon text-lg"></i>
+      야간지도
+    </button>
+  </div>
+
+  <!-- 숙소배치도 클릭 시 표시될 모바일/데스크톱 대응 디테일 모달창 -->
+  <div id="roomModal" onclick="closeRoomModalOnBackdrop(event)" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden justify-center items-center z-50 p-4 transition-all duration-300">
+    <div id="roomModalContent" class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform transition-all scale-95 opacity-0 duration-200">
+      <div class="flex justify-between items-center border-b pb-3 mb-4">
+        <div>
+          <h3 id="modalRoomTitle" class="text-lg font-bold text-slate-900">객실 세부 정보</h3>
+          <p id="modalRoomType" class="text-xs text-slate-400 font-semibold mt-0.5">3인실 / 남학생</p>
+        </div>
+        <button onclick="closeRoomModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-100 transition-colors">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+      <div class="space-y-3">
+        <p class="text-xs font-bold text-indigo-600"><i class="fa-solid fa-users"></i> 객실 배정 학생 목록</p>
+        <div id="modalStudentList" class="space-y-2 max-h-[250px] overflow-y-auto pr-1">
+          <!-- 선택된 호실의 학생 아이템들이 동적으로 렌더링됩니다 -->
+        </div>
+      </div>
+      <div class="mt-5 pt-3 border-t border-slate-100 flex justify-end">
+        <button onclick="closeRoomModal()" class="bg-slate-100 text-slate-700 text-xs font-bold py-2 px-4 rounded-xl hover:bg-slate-200 transition-colors">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 전체 학생 원시 데이터 모델링 (연락처 즉시연결 처리 포함)
+    const studentData = [
+      // 6-1반 (20명)
+      { class: '6-1', no: 1, name: '김건희', hp: '010-6302-6899', parentHp: '010-5526-6899' },
+      { class: '6-1', no: 2, name: '김민규', hp: '010-5815-4501', parentHp: '010-5898-4501' },
+      { class: '6-1', no: 3, name: '김상윤', hp: '010-6539-9758', parentHp: '010-8920-9758' },
+      { class: '6-1', no: 4, name: '김시현', hp: '-', parentHp: '010-2744-7516' },
+      { class: '6-1', no: 5, name: '김차율', hp: '010-8765-1633', parentHp: '010-4786-1633' },
+      { class: '6-1', no: 6, name: '박연준', hp: '010-8544-8853', parentHp: '010-7165-8853' },
+      { class: '6-1', no: 7, name: '서범석', hp: '-', parentHp: '010-7547-7687' },
+      { class: '6-1', no: 8, name: '정민찬', hp: '010-7713-8521', parentHp: '010-7713-8521' },
+      { class: '6-1', no: 9, name: '정현승', hp: '010-2046-7879', parentHp: '010-3441-4505' },
+      { class: '6-1', no: 10, name: '최윤수', hp: '010-2133-5155', parentHp: '010-8636-5155' },
+      { class: '6-1', no: 11, name: '홍주원', hp: '010-2115-2691', parentHp: '010-3936-2691' },
+      { class: '6-1', no: 12, name: '곽은설', hp: '010-3078-5424', parentHp: '010-8986-4474' },
+      { class: '6-1', no: 13, name: '김지원', hp: '010-2089-1253', parentHp: '010-7388-2549' },
+      { class: '6-1', no: 14, name: '박규리', hp: '010-7579-1746', parentHp: '010-3547-1746' },
+      { class: '6-1', no: 15, name: '이예서', hp: '010-9295-6321', parentHp: '010-6236-6321' },
+      { class: '6-1', no: 16, name: '이윤지', hp: '010-9703-8463', parentHp: '010-4555-8463' },
+      { class: '6-1', no: 17, name: '이화유', hp: '010-8655-9994', parentHp: '010-8898-0265' },
+      { class: '6-1', no: 18, name: '조윤아', hp: '010-4764-1174', parentHp: '010-8494-0327' },
+      { class: '6-1', no: 19, name: '허주은', hp: '-', parentHp: '010-2890-2090' },
+      { class: '6-1', no: 20, name: '홍순영', hp: '010-2600-0438', parentHp: '010-2258-0223' },
+
+      // 6-2반 (21명)
+      { class: '6-2', no: 1, name: '김선규', hp: '010-3903-3379', parentHp: '010-4769-5541' },
+      { class: '6-2', no: 2, name: '김재현', hp: '010-4081-1944', parentHp: '010-4081-8778' },
+      { class: '6-2', no: 3, name: '김지오', hp: '010-6877-5606', parentHp: '010-9166-5606' },
+      { class: '6-2', no: 4, name: '김현수', hp: '010-5627-8215', parentHp: '010-5657-8215' },
+      { class: '6-2', no: 5, name: '문주원', hp: '010-9646-9462', parentHp: '010-9052-9462' },
+      { class: '6-2', no: 6, name: '박승현', hp: '010-3958-1581', parentHp: '010-3933-1581' },
+      { class: '6-2', no: 7, name: '양도환', hp: '010-7467-0770', parentHp: '010-3496-0770' },
+      { class: '6-2', no: 8, name: '오은율', hp: '010-2666-8793', parentHp: '010-2161-8793' },
+      { class: '6-2', no: 9, name: '이기광', hp: '010-8014-1225', parentHp: '010-3860-3937' },
+      { class: '6-2', no: 10, name: '이다온', hp: '010-9568-3849', parentHp: '010-9553-0908' },
+      { class: '6-2', no: 11, name: '이서준', hp: '010-7699-1540', parentHp: '010-2992-1540' },
+      { class: '6-2', no: 12, name: '조윤호', hp: '010-5966-6518', parentHp: '010-7689-4551' },
+      { class: '6-2', no: 13, name: '황지민', hp: '010-3362-7816', parentHp: '010-7137-5846' },
+      { class: '6-2', no: 14, name: '권시윤', hp: '010-4086-1376', parentHp: '010-6366-1376' },
+      { class: '6-2', no: 15, name: '김하진', hp: '010-5626-5571', parentHp: '010-2251-5571' },
+      { class: '6-2', no: 16, name: '남채원', hp: '010-7158-8733', parentHp: '010-3789-9860' },
+      { class: '6-2', no: 17, name: '도은설', hp: '010-5348-0157', parentHp: '010-3808-0158' },
+      { class: '6-2', no: 18, name: '송은주', hp: '010-2412-4268', parentHp: '010-5054-8505' },
+      { class: '6-2', no: 19, name: '조윤서', hp: '010-8421-1838', parentHp: '010-5333-4587' },
+      { class: '6-2', no: 20, name: '조하은', hp: '010-7435-0208', parentHp: '010-9063-0308' },
+      { class: '6-2', no: 21, name: '최라윤', hp: '010-7668-4054', parentHp: '010-2344-4054' }
+    ];
+
+    // 페이지 로드 시 학생 목록 빌드 및 탭 초기 설정
+    window.onload = function() {
+      renderStudentList(studentData);
+      switchTab('tab-students'); // 기본 시작 탭
+    };
+
+    // 학생 비상연락망 리스트 렌더링 함수
+    function renderStudentList(data) {
+      const container = document.getElementById('studentListContainer');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-sm">
+            <i class="fa-solid fa-user-slash text-2xl mb-2 block"></i> 검색 결과에 부합하는 학생이 없습니다.
+          </div>
+        `;
+        return;
+      }
+
+      data.forEach(student => {
+        // 본인 및 학부모 전화바로걸기 태그 처리
+        const studentHpBtn = student.hp !== '-' 
+          ? `<a href="tel:${student.hp}" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-1.5 px-3 rounded-lg inline-flex items-center gap-1 border border-indigo-100 transition-colors"><i class="fa-solid fa-mobile-screen"></i> ${student.hp}</a>`
+          : `<span class="text-xs text-slate-400 font-medium px-2.5 py-1 bg-slate-100 rounded-md border border-slate-200">연락처 없음</span>`;
+
+        const parentHpBtn = student.parentHp.startsWith('010') 
+          ? `<a href="tel:${student.parentHp}" class="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold py-1.5 px-3 rounded-lg inline-flex items-center gap-1 border border-emerald-100 transition-colors"><i class="fa-solid fa-phone"></i> ${student.parentHp}</a>`
+          : `<span class="text-xs text-amber-600 font-semibold bg-amber-50 px-2.5 py-1 rounded-md"><i class="fa-solid fa-triangle-exclamation"></i> 연락처 확인요망</span>`;
+
+        const classBadge = student.class === '6-1' 
+          ? `<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded">6-1</span>`
+          : `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">6-2</span>`;
+
+        // 모바일 화면에서는 세로 구조 카드형태로, 데스크톱에서는 그리드 형태로 동적 적응
+        const row = document.createElement('div');
+        row.className = "sm:grid sm:grid-cols-12 p-3 text-sm items-center hover:bg-slate-50 transition-colors flex flex-col gap-2.5 sm:gap-0 text-center sm:text-left border-b border-slate-100";
+        row.innerHTML = `
+          <div class="col-span-1 flex justify-center items-center">${classBadge}</div>
+          <div class="col-span-1 text-xs text-slate-500 font-medium">${student.no}번</div>
+          <div class="col-span-2 font-bold text-slate-800">${student.name}</div>
+          <div class="col-span-4 flex justify-center sm:justify-start items-center">${studentHpBtn}</div>
+          <div class="col-span-4 flex justify-center sm:justify-start items-center">${parentHpBtn}</div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    // 학생 검색 및 필터링 기능
+    function filterStudentList() {
+      const keyword = document.getElementById('studentSearchInput').value.trim().toLowerCase();
+      const selectedClass = document.getElementById('classFilter').value;
+
+      let filtered = studentData;
+
+      if (selectedClass !== 'all') {
+        filtered = filtered.filter(s => s.class === selectedClass);
+      }
+
+      if (keyword) {
+        filtered = filtered.filter(s => s.name.includes(keyword));
+      }
+
+      renderStudentList(filtered);
+    }
+
+    // 방배정 전용 학생명 검색 기능
+    function searchStudentInRooms() {
+      const keyword = document.getElementById('roomSearchInput').value.trim().toLowerCase();
+      const selectedClass = document.getElementById('roomClassFilter').value;
+
+      // 반 필터 처리
+      const sections = document.querySelectorAll('.room-class-section');
+      sections.forEach(sec => {
+        if (selectedClass === 'all') {
+          sec.classList.remove('hidden');
+        } else {
+          if (sec.id === `room-section-${selectedClass}`) {
+            sec.classList.remove('hidden');
+          } else {
+            sec.classList.add('hidden');
+          }
+        }
+      });
+
+      // 학생명 매칭에 따른 카드 하이라이트 및 노출 처리
+      const cards = document.querySelectorAll('.room-card');
+      cards.forEach(card => {
+        const studentString = card.getAttribute('data-students');
+        
+        if (keyword === '') {
+          // 검색어가 없을 때는 전체 카드 불투명도 원복
+          card.classList.remove('opacity-25', 'ring-2', 'ring-indigo-500', 'bg-indigo-50/50');
+          card.classList.add('bg-slate-50');
+        } else {
+          if (studentString.includes(keyword)) {
+            // 매칭 성공 시 하이라이트
+            card.classList.remove('opacity-25', 'bg-slate-50');
+            card.classList.add('opacity-100', 'ring-2', 'ring-indigo-500', 'bg-indigo-50/50');
+          } else {
+            // 매칭 실패 시 투명도 저하
+            card.classList.remove('opacity-100', 'ring-2', 'ring-indigo-500', 'bg-indigo-50/50');
+            card.classList.add('opacity-25', 'bg-slate-50');
+          }
+        }
+      });
+    }
+
+    // 숙소배치도 객실 세부조회 모달 열기 로직
+    function openRoomModal(className, roomNo, type, studentNames) {
+      document.getElementById('modalRoomTitle').innerText = `${className}반 ${roomNo} 객실`;
+      document.getElementById('modalRoomType').innerText = `${type} [올림픽파크텔]`;
+
+      const listContainer = document.getElementById('modalStudentList');
+      listContainer.innerHTML = '';
+
+      studentNames.forEach((name, index) => {
+        // 학생 데이터베이스에서 상세 연락처 매핑
+        const student = studentData.find(s => s.name === name && s.class === className);
+        
+        let hpBtn = '';
+        let parentHpBtn = '';
+        // 명부의 첫 번째 학생을 방장으로 규정
+        const crownIcon = index === 0 ? '<span class="text-xs font-bold text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded ml-1.5 shrink-0"><i class="fa-solid fa-crown"></i> 방장</span>' : '';
+
+        if (student) {
+          hpBtn = student.hp !== '-' 
+            ? `<a href="tel:${student.hp}" class="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold p-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 border border-indigo-100 transition-colors"><i class="fa-solid fa-mobile-screen text-[10px]"></i> 본인</a>`
+            : `<span class="text-[10px] text-slate-400 font-medium px-2 py-1.5 bg-slate-100 rounded-md border border-slate-200">폰없음</span>`;
+
+          parentHpBtn = student.parentHp.startsWith('010') 
+            ? `<a href="tel:${student.parentHp}" class="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold p-1.5 px-2.5 rounded-lg inline-flex items-center gap-1 border border-emerald-100 transition-colors"><i class="fa-solid fa-phone text-[10px]"></i> 보호자</a>`
+            : `<span class="text-[10px] text-rose-600 font-semibold bg-rose-50 px-2 py-1.5 rounded-md">수정요망</span>`;
+        } else {
+          // 예외 처리
+          hpBtn = `<span class="text-[10px] text-slate-400 px-2 py-1.5 bg-slate-100 rounded-md">데이터 없음</span>`;
+        }
+
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white transition-colors duration-150";
+        item.innerHTML = `
+          <div class="flex items-center min-w-0">
+            <span class="font-bold text-slate-800 text-sm truncate">${name}</span>
+            ${crownIcon}
+          </div>
+          <div class="flex gap-1.5 shrink-0 ml-2">
+            ${hpBtn}
+            ${parentHpBtn}
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+
+      // 모달창 팝업 연출 및 열기
+      const modal = document.getElementById('roomModal');
+      const content = document.getElementById('roomModalContent');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+      }, 30);
+    }
+
+    // 모달 닫기 로직
+    function closeRoomModal() {
+      const modal = document.getElementById('roomModal');
+      const content = document.getElementById('roomModalContent');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 200);
+    }
+
+    // 모달 바깥 배경 클릭 시 닫기
+    function closeRoomModalOnBackdrop(event) {
+      if (event.target.id === 'roomModal') {
+        closeRoomModal();
+      }
+    }
+
+    // 탭 전환 코어 로직
+    function switchTab(tabId) {
+      // 1. 모든 탭 숨기기
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.add('hidden'));
+
+      // 2. 타겟 탭 오픈
+      document.getElementById(tabId).classList.remove('hidden');
+
+      // 3. 상단 네비게이션 탭 하이라이트 변경
+      const desktopNavButtons = document.querySelectorAll('#tab-container button');
+      desktopNavButtons.forEach(btn => {
+        if (btn.id === `btn-${tabId}`) {
+          btn.className = "px-4 py-3 text-sm font-semibold border-b-2 border-yellow-400 text-yellow-400 flex items-center gap-1.5 transition-colors duration-150";
+        } else {
+          btn.className = "px-4 py-3 text-sm font-medium border-b-2 border-transparent text-indigo-200 hover:text-white flex items-center gap-1.5 transition-colors duration-150";
+        }
+      });
+
+      // 4. 모바일 하단 플로팅 네비게이션바 하이라이트 변경
+      const mobileTabButtons = document.querySelectorAll('.fixed button');
+      mobileTabButtons.forEach(btn => {
+        if (btn.id === `mobile-btn-${tabId}`) {
+          btn.classList.remove('text-indigo-200');
+          btn.classList.add('text-yellow-400', 'font-bold');
+        } else {
+          btn.classList.remove('text-yellow-400', 'font-bold');
+          btn.classList.add('text-indigo-200');
+        }
+      });
+
+      // 5. 탭 변경 후 최상단 자동 스크롤
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 일정표 일차별 필터 기능
+    function filterDay(day) {
+      // 필터 버튼 스타일 전환
+      const btns = ['all', '1', '2', '3'];
+      btns.forEach(b => {
+        const btn = document.getElementById(`btn-day-${b}`);
+        if (b === day) {
+          btn.className = "px-3 py-1.5 rounded-md bg-white text-indigo-900 shadow";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-md text-slate-500 hover:text-slate-800";
+        }
+      });
+
+      // 타임라인 아이템 노출 제어
+      const items = document.querySelectorAll('.timeline-item');
+      items.forEach(item => {
+        if (day === 'all') {
+          item.classList.remove('hidden');
+        } else {
+          if (item.classList.contains(`day-${day}`)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
